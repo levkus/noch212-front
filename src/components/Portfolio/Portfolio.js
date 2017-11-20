@@ -3,14 +3,29 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../../store/portfolio'
 
+import PortfolioList from './PortfolioList/PortfolioList'
+import PortfolioListItem from './PortfolioListItem/PortfolioListItem'
+
 class Portfolio extends Component {
   componentWillMount = () => {
     this.props.actions.getPortfolioItems()
   }
 
+  renderList = () => {
+    return this.props.items.map(item => (
+      <PortfolioListItem item={item} />
+    ))
+  }
+
   render () {
+    if (this.props.loading) {
+      return <div className='loader'>Loading...</div>
+    }
+
     return (
-      <div>portfolio</div>
+      <PortfolioList>
+        {this.renderList()}
+      </PortfolioList>
     )
   }
 }

@@ -1,0 +1,21 @@
+.pli-container {
+  width: 300px;
+  padding: 10px;
+  background: #ddd;
+}
+
+.pli-thumb-container {
+  margin-bottom: 20px;
+}
+
+.pli-thumb {
+  max-width: 100%;
+}
+
+.pli-title {
+  margin: 0 0 20px;
+}
+
+.pli-lead {
+  margin: 0 0 20px;
+}
