@@ -17,13 +17,13 @@ const instance = axios.create({
 export const setPortfolioItems = createAction('setPortfolioItems')
 export const getPortfolioItems = () => (dispatch) => {
   axios.get('http://localhost/noch212/portfolio/api').then(resp => {
-    console.log(resp)
+    console.log(resp.data)
     dispatch(setPortfolioItems(resp.data))
   })
 }
 
 const reducer = handleActions({
-  [setPortfolioItems]: (state, payload) => ({
+  [setPortfolioItems]: (state, { payload }) => ({
     ...state,
     items: payload
   })
