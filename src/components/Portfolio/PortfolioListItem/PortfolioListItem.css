@@ -10,6 +10,8 @@
   width: 100%;
   background-color: #fff;
   box-shadow: 0 0 2px 0 rgba(35, 34, 63, 0.5);
+  animation: 1s appear forwards;
+  opacity: 0;
 }
 
 .pli-thumb-container {
@@ -46,4 +48,9 @@
 .pli-date {
   font-size: 0.8rem;
   color: red;
+}
+
+@keyframes appear {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

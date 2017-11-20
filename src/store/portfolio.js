@@ -4,7 +4,7 @@ import axios from 'axios'
 const initialState = {
   loading: false,
   items: [],
-  filter: 'all'
+  filteredItems: []
 }
 
 export const setLoadingState = createAction('setLoadingState')
@@ -19,7 +19,7 @@ export const getPortfolioItems = () => async (dispatch) => {
     console.warn(error)
   }
 }
-export const setFilter = createAction('setFilter')
+export const setFilteredItems = createAction('setFilteredItems')
 
 const reducer = handleActions({
   [setPortfolioItems]: (state, { payload }) => ({
@@ -30,9 +30,9 @@ const reducer = handleActions({
     ...state,
     loading: payload
   }),
-  [setFilter]: (state, { payload }) => ({
+  [setFilteredItems]: (state, { payload }) => ({
     ...state,
-    filter: payload
+    filteredItems: payload
   })
 }, initialState)
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { uniqueId, flatten, uniq } from 'lodash'
+import { NavLink, Redirect } from 'react-router-dom'
 import * as actionCreators from '../../store/portfolio'
 import { buttonsMap } from './utils'
 
@@ -12,61 +13,59 @@ import FilterButton from './FilterButton/FilterButton'
 import './Portfolio.css'
 
 class Portfolio extends Component {
-  state = {
-    filteredItems: []
-  }
 
   componentWillMount = async () => {
+    const { filter } = this.props.match.params
     await this.props.actions.getPortfolioItems()
-    this.setState({
-      filteredItems: this.props.items
-    })
+    this.props.actions.setFilteredItems(this.filterItems(filter))
   }
 
-  filterItems = () => {
-    const { items, filter } = this.props
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.match.params !== nextProps.match.params) {
+      const { filter } = nextProps.match.params
+      this.props.actions.setFilteredItems(this.filterItems(filter))
+    }
+  }
+
+  filterItems = (filter) => {
+    const { items } = this.props
     let filteredItems = []
     if (filter === 'all') {
       filteredItems = items
     } else {
-      filteredItems = items.filter(item => {
-        return item.cat.includes(filter)
-      })
+      filteredItems = items.filter(item => item.cat.includes(filter))
     }
-    this.setState({
-      filteredItems
-    })
-  }
-
-  setFilter = (filter) => async () => {
-    await this.props.actions.setFilter(filter)
-    this.filterItems()
+    return filteredItems
   }
 
   renderFilters = () => {
     const filters = uniq(flatten(this.props.items.map(item => item.cat.split(', '))))
     filters.unshift('all')
-
     return filters.map(filter => {
       const label = buttonsMap[filter]
       return (
-        <FilterButton key={uniqueId('filter')} onClick={this.setFilter(filter)} active={filter === this.props.filter}>{label}</FilterButton>
+        <NavLink
+          key={uniqueId('filter')} to={`/portfolio/${filter}`}
+          className='pfb' activeClassName='pfb-active'
+        >{label}</NavLink>
       )
     })
   }
 
   renderList = () => {
-    return this.state.filteredItems.map(item => (
-      <PortfolioListItem item={item} key={uniqueId('port')} />
+    return this.props.filteredItems.map((item, i) => (
+      <PortfolioListItem item={item} key={uniqueId('port')} delay={i * 0.08} />
     ))
   }
 
   render () {
-    if (this.props.loading) {
+    const { loading, filteredItems } = this.props
+    const empty = filteredItems.length === 0
+    if (loading) {
       return <div className='loader'>Loading...</div>
+    } else if (empty) {
+      return <Redirect to='/portfolio/all' />
     }
-
-
     return (
       <div className='portfolio'>
         <div className='portfolio-filters'>
@@ -83,7 +82,7 @@ class Portfolio extends Component {
 const mapStateToProps = (state) => ({
   items: state.portfolio.items,
   loading: state.portfolio.loading,
-  filter: state.portfolio.filter,
+  filteredItems: state.portfolio.filteredItems
 })
 
 const mapDispatchToProps = dispatch => {

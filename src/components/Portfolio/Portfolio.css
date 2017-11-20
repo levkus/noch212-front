@@ -12,3 +12,17 @@
   width: 200px;
   height: 100vh;
 }
+
+.pfb {
+  color: #6e7daf;
+  margin-bottom: 20px;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.pfb-active {
+  color: #fff;
+  margin-bottom: 20px;
+  transition: .3s;
+  text-decoration: none;
+}
