@@ -16,7 +16,8 @@ class Portfolio extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  portfolio: state.portfolio
+  items: state.portfolio.items,
+  loading: state.portfolio.loading
 })
 
 const mapDispatchToProps = dispatch => {
