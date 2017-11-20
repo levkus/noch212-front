@@ -1,7 +1,8 @@
 import React from 'react'
+import './PortfolioList.css'
 
 const PortfolioList = ({ children }) => (
-  <div className='pl-container'>
+  <div className='pl'>
     {children}
   </div>
 )

@@ -6,14 +6,6 @@ const initialState = {
   items: []
 }
 
-const instance = axios.create({
-  baseURL: 'http://localhost/noch212/portfolio/api',
-  timeout: '2000',
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-    'Access-Control-Allow-Origin': '*',
-  }
-})
 export const setLoadingState = createAction('setLoadingState')
 export const setPortfolioItems = createAction('setPortfolioItems')
 export const getPortfolioItems = () => (dispatch) => {
