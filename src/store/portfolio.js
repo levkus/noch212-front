@@ -3,18 +3,23 @@ import axios from 'axios'
 
 const initialState = {
   loading: false,
-  items: []
+  items: [],
+  filter: ''
 }
 
 export const setLoadingState = createAction('setLoadingState')
 export const setPortfolioItems = createAction('setPortfolioItems')
-export const getPortfolioItems = () => (dispatch) => {
-  dispatch(setLoadingState(true))
-  axios.get('http://localhost/noch212/portfolio/api').then(res => {
-    dispatch(setPortfolioItems(res.data))
+export const getPortfolioItems = () => async (dispatch) => {
+  try {
+    dispatch(setLoadingState(true))
+    const data = await axios.get('http://localhost/noch212/portfolio/api')
+    await dispatch(setPortfolioItems(data.data))
     dispatch(setLoadingState(false))
-  })
+  } catch (error) {
+    console.warn(error)
+  }
 }
+export const setFilter = createAction('setFilter')
 
 const reducer = handleActions({
   [setPortfolioItems]: (state, { payload }) => ({
@@ -24,6 +29,10 @@ const reducer = handleActions({
   [setLoadingState]: (state, { payload }) => ({
     ...state,
     loading: payload
+  }),
+  [setFilter]: (state, { payload }) => ({
+    ...state,
+    filter: payload
   })
 }, initialState)
 

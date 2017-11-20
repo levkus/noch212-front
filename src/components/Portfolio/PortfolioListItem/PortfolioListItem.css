@@ -1,7 +1,12 @@
 .pli-container {
-  width: 25%;
+  width: 100%;
   padding: 10px;
-  background: #ddd;
+}
+
+.pli-wrapper {
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  width: 100%;
 }
 
 .pli-thumb-container {
@@ -18,4 +23,8 @@
 
 .pli-lead {
   margin: 0 0 20px;
+}
+
+.pli-info {
+  padding: 10px;
 }

@@ -1,0 +1,29 @@
+.portfolio {
+  display: flex;
+}
+
+.portfolio-filters {
+  padding: 20px;
+  width: 200px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  background-color: #eee;
+  flex-shrink: 0;
+  position: fixed;
+}
+
+.portfolio-filter-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.portfolio-filter-button:hover {
+  color: red;
+}
+
+.portfolio-filter-button:active {
+  outline: none;
+}
