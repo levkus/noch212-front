@@ -1,7 +1,7 @@
 .pl-grid {
   display: flex;
-  padding: 10px;
   margin-left: 200px;
+  padding: 10px;
 }
 
 .pl-column {

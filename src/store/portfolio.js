@@ -4,7 +4,7 @@ import axios from 'axios'
 const initialState = {
   loading: false,
   items: [],
-  filter: ''
+  filter: 'all'
 }
 
 export const setLoadingState = createAction('setLoadingState')

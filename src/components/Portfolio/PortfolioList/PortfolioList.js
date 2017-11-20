@@ -3,11 +3,14 @@ import Masonry from 'react-masonry-css';
 import './PortfolioList.css'
 
 const breakpointColumnsObj = {
-  default: 5,
-  1100: 4,
-  700: 3,
-  500: 2,
-  400: 1,
+  default: 8,
+  2400: 7,
+  2100: 6,
+  1800: 5,
+  1500: 4,
+  1200: 3,
+  900: 2,
+  600: 1,
 }
 
 const PortfolioList = ({ children }) => (

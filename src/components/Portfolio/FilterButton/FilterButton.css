@@ -1,0 +1,22 @@
+.pfb {
+  color: #6e7daf;
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.pfb-active {
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.pfb:hover, .pfb:active, .pfb:focus {
+  color: #fff;
+  outline: none;
+}

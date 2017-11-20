@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { uniqueId, flatten, uniq } from 'lodash'
 import * as actionCreators from '../../store/portfolio'
+import { buttonsMap } from './utils'
 
 import PortfolioList from './PortfolioList/PortfolioList'
 import PortfolioListItem from './PortfolioListItem/PortfolioListItem'
+import FilterButton from './FilterButton/FilterButton'
 
 import './Portfolio.css'
 
@@ -46,8 +48,9 @@ class Portfolio extends Component {
     filters.unshift('all')
 
     return filters.map(filter => {
+      const label = buttonsMap[filter]
       return (
-        <button className='portfolio-filter-button' key={uniqueId('filter')} onClick={this.setFilter(filter)}>{filter}</button>
+        <FilterButton key={uniqueId('filter')} onClick={this.setFilter(filter)} active={filter === this.props.filter}>{label}</FilterButton>
       )
     })
   }

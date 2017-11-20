@@ -1,29 +1,14 @@
 .portfolio {
-  display: flex;
+
 }
 
 .portfolio-filters {
-  padding: 20px;
-  width: 200px;
+  position: fixed;
   display: flex;
+  flex-shrink: 0;
   flex-flow: column;
   align-items: flex-start;
-  background-color: #eee;
-  flex-shrink: 0;
-  position: fixed;
-}
-
-.portfolio-filter-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.portfolio-filter-button:hover {
-  color: red;
-}
-
-.portfolio-filter-button:active {
-  outline: none;
+  padding: 20px;
+  width: 200px;
+  height: 100vh;
 }

@@ -1,30 +1,49 @@
 .pli-container {
-  width: 100%;
+  flex-shrink: 0;
   padding: 10px;
+  width: 100%;
+  color: #23223f;
 }
 
 .pli-wrapper {
-  background-color: #ddd;
-  border: 1px solid #ddd;
+  overflow: hidden;
   width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 rgba(35, 34, 63, 0.5);
 }
 
 .pli-thumb-container {
-  margin-bottom: 20px;
+
 }
 
 .pli-thumb {
-  max-width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .pli-title {
-  margin: 0 0 20px;
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .pli-lead {
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
 
 .pli-info {
+
   padding: 10px;
+  background-image: linear-gradient(#f1f1f1, #fff);
+}
+
+.pli-techs {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.pli-date {
+  font-size: 0.8rem;
+  color: red;
 }
