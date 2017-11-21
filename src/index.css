@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #2e386b;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
   color: #fff;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  transition: transform .3s;
 }

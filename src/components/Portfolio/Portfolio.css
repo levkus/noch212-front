@@ -1,9 +1,12 @@
 .portfolio {
-
+  position: relative;
+  padding-top: 60px;
 }
 
 .portfolio-filters {
   position: fixed;
+  top: 60px;
+  left: 0;
   display: flex;
   flex-shrink: 0;
   flex-flow: column;
@@ -15,14 +18,24 @@
 
 .pfb {
   color: #6e7daf;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   transition: .3s;
   text-decoration: none;
 }
 
+.pfb:hover {
+  color: #fff;
+}
+
 .pfb-active {
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   transition: .3s;
   text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .portfolio-filters {
+    display: none;
+  }
 }

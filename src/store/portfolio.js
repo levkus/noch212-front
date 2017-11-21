@@ -12,7 +12,7 @@ export const setPortfolioItems = createAction('setPortfolioItems')
 export const getPortfolioItems = () => async (dispatch) => {
   try {
     dispatch(setLoadingState(true))
-    const data = await axios.get('http://localhost/noch212/portfolio/api')
+    const data = await axios.get('http://192.168.0.73/noch212/portfolio/api')
     await dispatch(setPortfolioItems(data.data))
     dispatch(setLoadingState(false))
   } catch (error) {

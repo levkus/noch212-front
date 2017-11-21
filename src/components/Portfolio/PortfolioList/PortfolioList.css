@@ -7,3 +7,9 @@
 .pl-column {
 
 }
+
+@media (max-width: 600px) {
+  .pl-grid {
+    margin-left: 0;
+  }
+}

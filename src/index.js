@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import 'normalize-css/normalize.css'
+import './animations.css';
 import './index.css';
 import 'react-router-modal/css/react-router-modal.css';
 import App from './components/App';

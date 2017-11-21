@@ -1,0 +1,56 @@
+.loader-fullscreen {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.loader-simple {
+  display: flex;
+  justify-content: center;
+}
+
+.rings-container {
+  /*transform: rotateY(60deg);*/
+  transform: translateY(-30px);
+}
+
+.ring {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ring.ring-back {
+  stroke: #6e7daf;
+  stroke-width: 2;
+}
+
+.ring.ring-front {
+  stroke: #fff;
+  stroke-dasharray: 32 32;
+  animation: dash 2s linear infinite;
+  transform-origin: center;
+  stroke-width: 4;
+  opacity: 0;
+}
+
+@keyframes dash {
+  0% {
+    transform: rotate(0deg);
+    /*stroke-dasharray: 10px 10px;*/
+    stroke-width: 0;
+    opacity: 0;
+  }
+  50% {
+    stroke-width: 4;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    /*stroke-dasharray: 100px 400px;*/
+    opacity: 0;
+    stroke-width: 0;
+  }
+}

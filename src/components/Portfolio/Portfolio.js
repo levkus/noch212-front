@@ -6,9 +6,10 @@ import { NavLink, Redirect } from 'react-router-dom'
 import * as actionCreators from '../../store/portfolio'
 import { buttonsMap } from './utils'
 
+import Header from '../Header/Header'
 import PortfolioList from './PortfolioList/PortfolioList'
 import PortfolioListItem from './PortfolioListItem/PortfolioListItem'
-import FilterButton from './FilterButton/FilterButton'
+import Loader from '../Loader/Loader'
 
 import './Portfolio.css'
 
@@ -21,6 +22,7 @@ class Portfolio extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps);
     if (this.props.match.params !== nextProps.match.params) {
       const { filter } = nextProps.match.params
       this.props.actions.setFilteredItems(this.filterItems(filter))
@@ -60,20 +62,20 @@ class Portfolio extends Component {
 
   render () {
     const { loading, filteredItems } = this.props
-    const empty = filteredItems.length === 0
     if (loading) {
-      return <div className='loader'>Loading...</div>
-    } else if (empty) {
-      return <Redirect to='/portfolio/all' />
+      return <Loader fullscreen />
     }
     return (
-      <div className='portfolio'>
-        <div className='portfolio-filters'>
-          {this.renderFilters()}
-        </div>
-        <PortfolioList>
-          {this.renderList()}
-        </PortfolioList>
+      <div>
+        <Header logo />
+        <main className='portfolio'>
+          <div className='portfolio-filters' ref={filters => this.filters = filters}>
+            {this.renderFilters()}
+          </div>
+          <PortfolioList>
+            {this.renderList()}
+          </PortfolioList>
+        </main>
       </div>
     )
   }

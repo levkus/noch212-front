@@ -1,14 +1,14 @@
 export const buttonsMap = {
   all: 'Все',
-  info: 'Инфографика',
+  infographics: 'Инфографика',
   illustrations: 'Иллюстрации',
   ui: 'UI',
   restore: 'Реставрации',
-  scrap: 'Скрапбукинг',
-  draw: 'Живопись',
+  scrapbooking: 'Скрапбукинг',
+  drawings: 'Живопись',
   smm: 'SMM',
-  adv: 'Реклама',
-  package: 'Упаковки',
+  ads: 'Реклама',
+  printed: 'Печатная продукция',
 }
 
 export const techsMap = {
@@ -17,4 +17,7 @@ export const techsMap = {
   photoshop: 'Adobe Photoshop',
   affinity: 'Affinity Designer',
   corel: 'Corel Draw',
+  sai: 'Paint Tool Sai',
+  powerpoint: 'Microsoft PowerPoint',
+  keynote: 'Apple Keynote'
 }
