@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { uniqueId, flatten, uniq } from 'lodash'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import * as actionCreators from '../../store/portfolio'
 import { buttonsMap } from './utils'
 
@@ -22,7 +22,6 @@ class Portfolio extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps);
     if (this.props.match.params !== nextProps.match.params) {
       const { filter } = nextProps.match.params
       this.props.actions.setFilteredItems(this.filterItems(filter))
@@ -61,7 +60,7 @@ class Portfolio extends Component {
   }
 
   render () {
-    const { loading, filteredItems } = this.props
+    const { loading } = this.props
     if (loading) {
       return <Loader fullscreen />
     }

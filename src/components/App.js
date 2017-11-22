@@ -1,13 +1,17 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { ModalContainer, ModalRoute } from 'react-router-modal'
+import { withRouter } from 'react-router'
+
 import Home from './Home/Home'
 import Portfolio from './Portfolio/Portfolio'
 import Contacts from './Contacts/Contacts'
 import About from './About/About'
+import Details from './Portfolio/Details/Details'
 import Navigation from './Navigation/Navigation'
 
-const App = () => {
+const App = (props) => {
+  console.log('%c> match:', 'background: #00897B; color: #fff; padding: 5px; font-weight: bold;', props);
   return (
     <div>
       <Switch>
@@ -20,13 +24,13 @@ const App = () => {
         <Route exact path='/portfolio'>
           <Redirect to='/portfolio/all' />
         </Route>
-        <Route path='/portfolio/:filter' component={Portfolio} />
-        <ModalRoute exact path='/modal' parentPath='/portfolio'>Hello</ModalRoute>
+        <Route path='/portfolio/:filter' render={(props) => <Portfolio {...props} />} />
+        <ModalRoute exact path='/details/:item' parentPath='/portfolio/all' component={Details} />
       </Switch>
-      <ModalContainer />
       <Navigation />
+      <ModalContainer />
     </div>
   )
 }
 
-export default App
+export default withRouter(App)
