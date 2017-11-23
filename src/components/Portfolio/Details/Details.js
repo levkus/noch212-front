@@ -7,6 +7,10 @@ import './Details.css'
 
 class Details extends Component {
 
+  state = {
+    mode: 'overview'
+  }
+
   componentWillMount = async () => {
     const { item } = this.props.match.params
     if (this.props.items.length === 0) {
@@ -15,15 +19,33 @@ class Details extends Component {
     await this.props.actions.openItem(this.props.items.find(i => i.id === item ))
   }
 
-  renderImage = () => {
-    const {openedItem} = this.props
-    return <img className='details-main-image' src={`${openedItem.url}/${openedItem.thumb}`} alt=""/>
+  switchMode = () => {
+    if (this.state.mode === 'fullsize') {
+      this.setState({ mode: 'overview' })
+    } else {
+      this.setState({ mode: 'fullsize' })
+    }
   }
 
   render () {
+    const { openedItem } = this.props
+    const { mode } = this.state
+    const date = new Date(0)
+    date.setUTCSeconds(openedItem.date)
+
     return (
-      <div className='details'>
-        {this.renderImage()}
+      <div className={`details ${mode}`}>
+        <div className='details-title'>{openedItem.title}</div>
+        <div className='details-main-image-container'>
+          <div className='details-image-background' style={{ backgroundImage: `url("${openedItem.url}/${openedItem.thumb}")` }} />
+          <img className='details-main-image' src={`${openedItem.url}/${openedItem.thumb}`} alt="" onClick={this.switchMode} />
+        </div>
+        <div className='details-meta'>
+          <div>{date.getFullYear()}</div>
+          <div>Test</div>
+          <div>Test</div>
+        </div>
+        <div className='details-description'>{openedItem.lead}</div>
       </div>
     )
   }
