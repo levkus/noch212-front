@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../../../store/portfolio'
 
+import './Details.css'
+
 class Details extends Component {
 
   componentWillMount = async () => {
@@ -15,12 +17,14 @@ class Details extends Component {
 
   renderImage = () => {
     const {openedItem} = this.props
-    return <img src={`${openedItem.url}/${openedItem.thumb}`} alt=""/>
+    return <img className='details-main-image' src={`${openedItem.url}/${openedItem.thumb}`} alt=""/>
   }
 
   render () {
     return (
-      <div>{this.renderImage()}</div>
+      <div className='details'>
+        {this.renderImage()}
+      </div>
     )
   }
 }

@@ -28,7 +28,12 @@ const App = (props) => {
         <ModalRoute exact path='/details/:item' parentPath='/portfolio/all' component={Details} />
       </Switch>
       <Navigation />
-      <ModalContainer />
+      <ModalContainer
+        bodyModalOpenClassName='modal-open'
+        containerClassName='modal-container'
+        backdropClassName='modal-backdrop'
+        modalClassName='modal'
+      />
     </div>
   )
 }
