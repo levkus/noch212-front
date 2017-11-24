@@ -7,7 +7,7 @@ import Home from './Home/Home'
 import Portfolio from './Portfolio/Portfolio'
 import Contacts from './Contacts/Contacts'
 import About from './About/About'
-import Details from './Portfolio/Details/Details'
+import Details from './Details/Details'
 import Navigation from './Navigation/Navigation'
 
 const App = (props) => {

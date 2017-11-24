@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actionCreators from '../../../store/portfolio'
+import * as Vibrant from 'node-vibrant'
+import * as actionCreators from '../../store/portfolio'
 
 import './Details.css'
 
@@ -27,6 +28,12 @@ class Details extends Component {
     }
   }
 
+  renderColors = (e) => {
+    const { openedItem } = this.props
+    console.log(e.target);
+    Vibrant.from(`${openedItem.url}/${openedItem.thumb}`).getPalette((err, palette) => console.log(palette))
+  }
+
   render () {
     const { openedItem } = this.props
     const { mode } = this.state
@@ -36,16 +43,27 @@ class Details extends Component {
     return (
       <div className={`details ${mode}`}>
         <div className='details-title'>{openedItem.title}</div>
-        <div className='details-main-image-container'>
-          <div className='details-image-background' style={{ backgroundImage: `url("${openedItem.url}/${openedItem.thumb}")` }} />
-          <img className='details-main-image' src={`${openedItem.url}/${openedItem.thumb}`} alt="" onClick={this.switchMode} />
+        <div className='details-main-image-container' onClick={this.switchMode}>
+          <div className='details-image-square' style={{ backgroundImage: `url("${openedItem.url}/${openedItem.thumb}")` }} />
+          <img
+            className='details-main-image'
+            ref={image => this.image = image}
+            onLoad={this.renderColors}
+            src={`${openedItem.url}/${openedItem.thumb}`}
+            alt=""
+          />
         </div>
         <div className='details-meta'>
-          <div>{date.getFullYear()}</div>
-          <div>Test</div>
-          <div>Test</div>
+          <div><span className='details-label'>Год:</span>{date.getFullYear()}</div>
+          <div><span className='details-label'>Категории:</span>Test</div>
+          <div><span className='details-label'>Техники:</span>Test</div>
         </div>
-        <div className='details-description'>{openedItem.lead}</div>
+        <div className='details-description'>
+          <div className='details-label'>Описание:</div>
+          <div>
+            {openedItem.lead}
+          </div>
+        </div>
       </div>
     )
   }
