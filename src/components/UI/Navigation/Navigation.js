@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
-import * as actionCreators from '../../store/ui'
+import * as actionCreators from 'store/ui'
 
 import './Navigation.css'
 
@@ -14,6 +14,7 @@ class Navigation extends Component {
   componentDidUpdate = () => {
     if (this.props.navOpen) {
       this.overlay.classList.add('open')
+      document.body.classList.add('navigation-open')
       setTimeout(() => {
         this.overlay.classList.add('visible')
       }, 1)
@@ -21,6 +22,7 @@ class Navigation extends Component {
       this.overlay.classList.remove('visible')
       setTimeout(() => {
         this.overlay.classList.remove('open')
+        document.body.classList.remove('navigation-open')
       }, 300)
     }
   }
@@ -36,7 +38,7 @@ class Navigation extends Component {
     return (
       <nav className={navOpen ? 'navigation open' : 'navigation'}>
         <div className='navigation-links' onClick={this.toggleNav}>
-          <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/home'>Главная</NavLink>
+          <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/'>Главная</NavLink>
           <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/about'>Обо мне</NavLink>
           <NavLink className='navigation-link' activeClassName='navigation-link-active' to='/portfolio'>Портфолио</NavLink>
           <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/contacts'>Контакты</NavLink>

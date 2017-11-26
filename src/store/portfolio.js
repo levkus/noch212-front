@@ -26,7 +26,7 @@ export const openItem = createAction('openItem')
 const reducer = handleActions({
   [setPortfolioItems]: (state, { payload }) => ({
     ...state,
-    items: payload
+    items: [...payload, ...payload, ...payload, ...payload, ...payload],
   }),
   [setLoadingState]: (state, { payload }) => ({
     ...state,

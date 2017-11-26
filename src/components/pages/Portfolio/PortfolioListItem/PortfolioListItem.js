@@ -1,18 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { techsMap } from '../utils'
 import './PortfolioListItem.css'
 
 
 
 
-const PortfolioListItem = ({ item, delay }) => {
+const PortfolioListItem = ({ item, delay, match }) => {
   const classnames = `${item.cat.split(', ').map(cat => cat).join(' ')} ${item.techs.split(', ').map(cat => cat).join(' ')}`
   const techs = item.techs.split(', ').map(tech => techsMap[tech]).join(', ')
   const date = new Date(0)
   date.setUTCSeconds(item.date)
+  const path = {
+    pathname: `${match.url}/details/${item.id}`,
+    state: { modal: true },
+  }
   return (
-    <Link to={`/details/${item.id}`} className={`pli-container ${classnames}`}>
+    <Link to={path} className={`pli-container ${classnames}`}>
       <div className='pli-wrapper' style={{ animationDelay: `${delay}s` }}>
         <div className='pli-thumb-container'>
           <img className='pli-thumb' src={`${item.url}/${item.thumb}`} alt="" />
@@ -29,4 +34,4 @@ const PortfolioListItem = ({ item, delay }) => {
   )
 }
 
-export default PortfolioListItem
+export default withRouter(PortfolioListItem)

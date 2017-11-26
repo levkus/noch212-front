@@ -11,3 +11,43 @@ body {
   font-family: 'Roboto', sans-serif;
   transition: transform .3s;
 }
+
+body.details-open {
+  overflow: hidden;
+}
+
+body.navigation-open {
+  overflow: hidden;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity .4s;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+/*.fade-appear {
+  opacity: 0.01;
+}
+
+.fade-appear.modal-fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}*/
+
+@keyframes appear {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

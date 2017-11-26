@@ -21,6 +21,7 @@
     "react-router-modal": "^1.2.0",
     "react-scripts": "1.0.17",
     "react-staggered-animation": "^0.0.2",
+    "react-transition-group": "1.x",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-thunk": "^2.2.0"

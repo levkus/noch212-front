@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../Logo/Logo'
-import Header from '../Header/Header'
+import Logo from 'components/UI/Logo/Logo'
+import Header from 'components/UI/Header/Header'
 import './Home.css'
 
 const Home = () => (

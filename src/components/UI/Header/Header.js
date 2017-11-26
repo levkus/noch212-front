@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actionCreators from '../../store/ui'
-import Logo from '../Logo/Logo'
+import * as actionCreators from 'store/ui'
+
+import Logo from 'components/UI/Logo/Logo'
 
 import './Header.css'
 
