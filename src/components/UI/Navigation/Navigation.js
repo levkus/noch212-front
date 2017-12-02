@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from 'store/ui'
+
+import MenuLink from 'components/UI/MenuLink/MenuLink'
 
 import './Navigation.css'
 
@@ -38,10 +39,10 @@ class Navigation extends Component {
     return (
       <nav className={navOpen ? 'navigation open' : 'navigation'}>
         <div className='navigation-links' onClick={this.toggleNav}>
-          <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/'>Главная</NavLink>
-          <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/about'>Обо мне</NavLink>
-          <NavLink className='navigation-link' activeClassName='navigation-link-active' to='/portfolio'>Портфолио</NavLink>
-          <NavLink exact className='navigation-link' activeClassName='navigation-link-active' to='/contacts'>Контакты</NavLink>
+          <MenuLink exact to='/'>Главная</MenuLink>
+          <MenuLink exact to='/about'>Обо мне</MenuLink>
+          <MenuLink to='/portfolio'>Портфолио</MenuLink>
+          <MenuLink exact to='/contacts'>Контакты</MenuLink>
         </div>
         <div className='navigation-overlay' ref={overlay => this.overlay = overlay} onClick={this.toggleNav} />
         <div className='bars-container'>

@@ -21,25 +21,6 @@
   padding: 20px;
 }
 
-.navigation-link {
-  color: #6e7daf;
-  margin-bottom: 10px;
-  transition: .3s;
-  text-decoration: none;
-}
-
-.navigation-link:hover {
-  color: #fff;
-}
-
-.navigation-link-active {
-  color: #fff;
-  margin-bottom: 10px;
-  transition: .3s;
-  text-decoration: none;
-}
-
-
 .navigation-overlay {
   position: absolute;
   top: 0;

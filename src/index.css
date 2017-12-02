@@ -13,7 +13,9 @@ body {
 }
 
 body.details-open {
-  overflow: hidden;
+  position: fixed; 
+  overflow-y: scroll;
+  width: 100%;
 }
 
 body.navigation-open {

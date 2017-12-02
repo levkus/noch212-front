@@ -1,0 +1,17 @@
+.menu-link {
+  color: #6e7daf;
+  margin-bottom: 10px;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.menu-link:hover {
+  color: #fff;
+}
+
+.menu-link.active {
+  color: #fff;
+  margin-bottom: 10px;
+  transition: .3s;
+  text-decoration: none;
+}

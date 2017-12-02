@@ -1,38 +1,43 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actionCreators from 'store/ui'
 import { withRouter } from 'react-router'
 import { uniqueId, flatten, uniq } from 'lodash'
 import { buttonsMap } from '../utils'
+
+import MenuLink from 'components/UI/MenuLink/MenuLink'
 
 import './FiltersList.css'
 
 class FiltersList extends Component {
 
   shouldComponentUpdate = (nextProps) => {
-    if (nextProps.items !== this.props.items) return true
-    if (nextProps.match.params.filter !== this.props.match.params.filter) return true
-    if (nextProps.navOpen !== this.props.navOpen) return true
+    console.log('%c> nextProps:', 'background: #7B1FA2; color: #fff; padding: 5px; font-weight: bold;', nextProps);
+    if (nextProps.match.params.filter !== this.props.match.params.filter) {
+      console.log('%c> wtf:', 'background: #D81B60; color: #fff; padding: 5px; font-weight: bold;', nextProps);
+      return true
+    }
+    if (nextProps.filtersOpen !== this.props.filtersOpen) return true
     return false
   }
 
   componentDidUpdate = () => {
-    if (this.props.filtersOpen) {
-      this.overlay.classList.add('open')
-      document.body.classList.add('navigation-open')
-      setTimeout(() => {
-        this.overlay.classList.add('visible')
-      }, 1)
-    } else if (!this.props.navOpen) {
-      this.overlay.classList.remove('visible')
-      setTimeout(() => {
-        this.overlay.classList.remove('open')
-        document.body.classList.remove('navigation-open')
-      }, 300)
+    if (window.innerWidth <= 600) {
+      if (this.props.filtersOpen) {
+        this.overlay.classList.add('open')
+        document.body.classList.add('navigation-open')
+        setTimeout(() => {
+          this.overlay.classList.add('visible')
+        }, 1)
+      } else if (!this.props.filtersOpen) {
+        this.overlay.classList.remove('visible')
+        setTimeout(() => {
+          this.overlay.classList.remove('open')
+          document.body.classList.remove('navigation-open')
+        }, 300)
+      }
     }
-  }
-
-  shouldComponentUpdate = (nextProps) => {
-
   }
 
   renderFilters = () => {
@@ -41,11 +46,7 @@ class FiltersList extends Component {
     return filters.map(filter => {
       const label = buttonsMap[filter]
       return (
-        <NavLink
-          key={uniqueId('filter')} to={`/portfolio/${filter}`}
-          className='navigation-link'
-          activeClassName='navigation-link-active'
-        >{label}</NavLink>
+        <MenuLink key={uniqueId('filter')} to={`/portfolio/${filter}`}>{label}</MenuLink>
       )
     })
   }
@@ -57,15 +58,16 @@ class FiltersList extends Component {
 
   render () {
     console.log('FiltersList render');
+    const { filtersOpen } = this.props
     return (
-      <div className='filters-list' ref={filters => this.filters = filters}>
-        <div className='navigation-links'>
+      <div className={filtersOpen ? 'filters-list open' : 'filters-list'} ref={filters => this.filters = filters}>
+        <div className='filters-links' onClick={this.toggleFilters}>
           {this.renderFilters()}
         </div>
         <div className='filters-overlay' ref={overlay => this.overlay = overlay} onClick={this.toggleFilters} />
         <div className='filters-icon-container'>
           <button className='filters-button' onClick={this.toggleFilters}>
-            <i className='fa fal fa-filter' />
+            <i className='fa fal fa-hashtag' />
           </button>
         </div>
       </div>
@@ -73,4 +75,14 @@ class FiltersList extends Component {
   }
 }
 
-export default withRouter(FiltersList)
+const mapStateToProps = state => ({
+  filtersOpen: state.ui.filtersOpen,
+})
+
+const mapDispatchToProps = dispatch => {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+const FiltersListWithStore = connect(mapStateToProps, mapDispatchToProps)(FiltersList)
+
+export default withRouter(FiltersListWithStore)
