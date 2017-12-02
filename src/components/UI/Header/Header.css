@@ -28,3 +28,10 @@
   animation: 1s appear forwards;
   animation-delay: 0.2s;
 }
+
+@media (max-width: 600px) {
+  .header {
+    justify-content: center;
+    padding: 0;
+  }
+}

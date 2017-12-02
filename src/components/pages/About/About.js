@@ -6,8 +6,14 @@ import './About.css'
 const About = () => (
   <div>
     <Header logo transparent />
-    <div className='about-container'>
-      Обо мне
+    <div className='about'>
+      <div className='about-container'>
+        <div className='about-photo' />
+        <div className='about-separator' />
+        <div className='about-text'>
+          Привет! Меня зовут Василина.
+        </div>
+      </div>
     </div>
   </div>
 )

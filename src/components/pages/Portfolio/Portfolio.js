@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { uniqueId, flatten, uniq } from 'lodash'
-import { NavLink } from 'react-router-dom'
+import { uniqueId } from 'lodash'
+
 import * as actionCreators from 'store/portfolio'
-import { buttonsMap } from './utils'
 
 import Header from 'components/UI/Header/Header'
 import Loader from 'components/UI/Loader/Loader'
 import PortfolioList from './PortfolioList/PortfolioList'
 import PortfolioListItem from './PortfolioListItem/PortfolioListItem'
+import FiltersList from './FiltersList/FiltersList'
 
 import './Portfolio.css'
 
@@ -60,20 +60,6 @@ class Portfolio extends Component {
     return filteredItems
   }
 
-  renderFilters = () => {
-    const filters = uniq(flatten(this.props.items.map(item => item.cat.split(', '))))
-    filters.unshift('all')
-    return filters.map(filter => {
-      const label = buttonsMap[filter]
-      return (
-        <NavLink
-          key={uniqueId('filter')} to={`/portfolio/${filter}`}
-          className='pfb' activeClassName='pfb-active'
-        >{label}</NavLink>
-      )
-    })
-  }
-
   renderList = () => {
     return this.props.filteredItems.map((item, i) => (
       <PortfolioListItem item={item} key={uniqueId('port')} delay={i * 0.08} />
@@ -81,18 +67,16 @@ class Portfolio extends Component {
   }
 
   render () {
-    const { loading } = this.props
+    const { loading, items } = this.props
     if (loading) {
       return <Loader fullscreen />
     }
-    console.log('render list');
+    console.log('Portfolio render');
     return (
       <div>
         <Header logo />
         <main className='portfolio'>
-          <div className='portfolio-filters' ref={filters => this.filters = filters}>
-            {this.renderFilters()}
-          </div>
+          <FiltersList items={items} />
           <PortfolioList>
             {this.renderList()}
           </PortfolioList>
