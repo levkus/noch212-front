@@ -16,7 +16,7 @@ const App = () => {
         <Route exact path='/contacts' component={Contacts} />
         <Route exact path='/about' component={About} />
         <Route exact path='/portfolio'>
-          <Redirect to='/portfolio/all' />
+          <Redirect to='/portfolio/favorites' />
         </Route>
       </Switch>
       <Route path='/portfolio/:filter' component={Portfolio} />

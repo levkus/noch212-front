@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Masonry from 'react-masonry-css';
 
 import './PortfolioList.css'
@@ -14,10 +14,18 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
-const PortfolioList = ({ children }) => (
-  <Masonry breakpointCols={breakpointColumnsObj} className='pl-grid' columnClassName='pl-column'>
-    {children}
-  </Masonry>
-)
+class PortfolioList extends Component {
+  render () {
+    console.log('PortfiloList Render')
+    return (
+      <div>
+        <h4 className='pl-announce'>Порфолио в активной разработке</h4>
+        <Masonry breakpointCols={breakpointColumnsObj} className='pl-grid' columnClassName='pl-column'>
+          {this.props.children}
+        </Masonry>
+      </div>
+    )
+  }
+}
 
 export default PortfolioList

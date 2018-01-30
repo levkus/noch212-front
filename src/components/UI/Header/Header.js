@@ -7,9 +7,10 @@ import Logo from 'components/UI/Logo/Logo'
 
 import './Header.css'
 
-const Header = ({ actions, transparent, logo }) => {
+const Header = ({ actions, transparent, logo, center }) => {
+  const classname = `header ${transparent ? 'transparent' : ''} ${center ? 'center' : ''}`
   return (
-    <header className={transparent ? 'header transparent' : 'header'}>
+    <header className={classname}>
       {logo && <div className='header-logo-container'>
         <Logo />
       </div>}

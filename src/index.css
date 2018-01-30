@@ -7,15 +7,13 @@ body {
   padding: 0;
   background-color: #2e386b;
   color: #fff;
-  font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-family: 'Source Sans Pro', sans-serif;
   transition: transform .3s;
 }
 
 body.details-open {
-  position: fixed; 
-  overflow-y: scroll;
-  width: 100%;
+  overflow: hidden;
 }
 
 body.navigation-open {

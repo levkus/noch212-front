@@ -1,0 +1,8 @@
+.details-meta-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dmi-title {
+  font-weight: 400;
+}

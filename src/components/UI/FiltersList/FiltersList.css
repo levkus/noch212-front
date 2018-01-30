@@ -5,9 +5,9 @@
   z-index: 101;
   width: 200px;
   height: 100%;
+  transition: transform .3s;
   /* background-color: #282E58; */
   transform: translateX(0);
-  transition: transform .3s;
 }
 
 .filters-list.open {
@@ -18,12 +18,12 @@
   position: absolute;
   top: 0;
   right: -100vw;
+  z-index: 101;
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: #1f2341;
   opacity: 0;
-  z-index: 101;
-  display: none;
   transition: opacity 0.3s;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .filters-overlay.open {
-  display: block;
+  display: none;
 }
 
 .filters-overlay.visible {
@@ -46,11 +46,11 @@
   position: absolute;
   top: 0;
   right: -45px;
+  z-index: 102;
   display: flex;
+  display: none;
   align-items: center;
   height: 60px;
-  z-index: 102;
-  display: none;
 }
 
 .filters-button {
@@ -64,10 +64,6 @@
   color: #6e7daf;
   font-size: 1.8rem;
   transition: 0.3s;
-
-  svg {
-    margin: 0;
-  }
 }
 
 .filters-button:hover {
@@ -80,13 +76,17 @@
 
 @media (max-width: 600px) {
   .filters-list {
-    transform: translateX(-240px);
-    background-color: #282E58;
     top: 0;
     width: 240px;
+    background-color: #282E58;
+    transform: translateX(-240px);
   }
 
   .filters-icon-container {
     display: flex;
+  }
+
+  .filters-overlay.open {
+    display: block;
   }
 }

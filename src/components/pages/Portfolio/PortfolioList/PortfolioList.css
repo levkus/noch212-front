@@ -8,8 +8,23 @@
 
 }
 
+.pl-announce {
+  padding: 0 10px;
+  margin: 10px 0 0 210px;
+}
+
 @media (max-width: 600px) {
   .pl-grid {
     margin-left: 0;
+  }
+
+  .pl-announce {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .pl-grid {
+    padding: 5px;
   }
 }

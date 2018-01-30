@@ -9,7 +9,7 @@ import Header from 'components/UI/Header/Header'
 import Loader from 'components/UI/Loader/Loader'
 import PortfolioList from './PortfolioList/PortfolioList'
 import PortfolioListItem from './PortfolioListItem/PortfolioListItem'
-import FiltersList from './FiltersList/FiltersList'
+import FiltersList from 'components/UI/FiltersList/FiltersList'
 
 import './Portfolio.css'
 
@@ -30,23 +30,10 @@ class Portfolio extends Component {
   }
 
   shouldComponentUpdate = (nextProps) => {
-    if (nextProps.match.params.filter !== this.props.match.params.filter) {
-      console.log('filter changed');
-      return true
-    }
-    if (nextProps.items !== this.props.items) {
-      console.log('items changed');
-      return true
-    }
-    if (nextProps.loading !== this.props.loading) {
-      console.log('loading changed');
-      return true
-    }
-    if (nextProps.filteredItems !== this.props.filteredItems) {
-      console.log('filteredItems changed');
-      return true
-    }
-    return false
+    return nextProps.match.params.filter !== this.props.match.params.filter ||
+           nextProps.items !== this.props.items ||
+           nextProps.loading !== this.props.loading ||
+           nextProps.filteredItems !== this.props.filteredItems
   }
 
   filterItems = (filter) => {
@@ -74,7 +61,7 @@ class Portfolio extends Component {
     console.log('Portfolio render');
     return (
       <div>
-        <Header logo />
+        <Header logo center />
         <main className='portfolio'>
           <FiltersList items={items} />
           <PortfolioList>

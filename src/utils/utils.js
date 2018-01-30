@@ -1,5 +1,14 @@
+import moment from 'moment'
+
+export const makeDate = (date) => {
+  const newDate = new Date(0)
+  newDate.setUTCSeconds(date)
+  return moment(newDate)
+}
+
 export const buttonsMap = {
   all: 'Все',
+  favorites: 'Избранное',
   infographics: 'Инфографика',
   illustrations: 'Иллюстрации',
   ui: 'UI',
@@ -9,6 +18,7 @@ export const buttonsMap = {
   smm: 'SMM',
   ads: 'Реклама',
   printed: 'Печатная продукция',
+  logos: 'Логотипы',
 }
 
 export const techsMap = {

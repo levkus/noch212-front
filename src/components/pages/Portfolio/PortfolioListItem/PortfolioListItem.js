@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
-import { techsMap } from '../utils'
+import { makeDate, techsMap } from 'utils/utils'
 import './PortfolioListItem.css'
 
 
@@ -10,8 +10,7 @@ import './PortfolioListItem.css'
 const PortfolioListItem = ({ item, delay, match }) => {
   const classnames = `${item.cat.split(', ').map(cat => cat).join(' ')} ${item.techs.split(', ').map(cat => cat).join(' ')}`
   const techs = item.techs.split(', ').map(tech => techsMap[tech]).join(', ')
-  const date = new Date(0)
-  date.setUTCSeconds(item.date)
+  const year = makeDate(item.date).year()
   const path = {
     pathname: `${match.url}/details/${item.id}`,
     state: { modal: true },
@@ -27,7 +26,7 @@ const PortfolioListItem = ({ item, delay, match }) => {
           <h3 className='pli-title'>{item.title}</h3>
           <div className='pli-techs'>{techs}</div>
           <p className='pli-lead'>{item.lead}</p>
-          <div className='pli-date'>{date.getFullYear()}</div>
+          <div className='pli-date'>{year}</div>
         </div>
       </div>
     </Link>

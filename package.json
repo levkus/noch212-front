@@ -24,7 +24,8 @@
     "react-transition-group": "1.x",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "social-likes-next": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

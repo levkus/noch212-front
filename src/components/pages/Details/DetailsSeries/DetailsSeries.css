@@ -1,0 +1,31 @@
+.details-series {
+  margin-bottom: 10px;
+}
+
+.ds-title {
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.ds-grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.ds-item {
+  width: calc(50% - 5px);
+  /*padding: 5px;*/
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.ds-item:nth-child(odd) {
+  margin-right: 10px;
+}
+
+.ds-image {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(49, 56, 105, .4);
+}

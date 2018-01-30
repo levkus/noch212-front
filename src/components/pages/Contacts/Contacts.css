@@ -13,12 +13,12 @@
 }
 
 .contacts-link {
+  display: block;
   color: #6e7daf;
   text-decoration: none;
-  transition: .3s;
-  display: block;
-  animation: 1s appear forwards;
   opacity: 0;
+  transition: .3s;
+  animation: 1s appear forwards;
 }
 
 .contacts-link:hover {
@@ -30,8 +30,8 @@
 }
 
 .contacts-icon {
-  font-size: 1.5rem;
   margin-right: 10px;
+  font-size: 1.5rem;
 }
 
 .contacts-link-text {

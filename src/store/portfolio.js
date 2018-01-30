@@ -5,15 +5,18 @@ const initialState = {
   loading: false,
   items: [],
   filteredItems: [],
-  openedItem: {}
+  selected: {}
 }
+
+const baseURL = 'http://admin.noch212.me'
 
 export const setLoadingState = createAction('setLoadingState')
 export const setPortfolioItems = createAction('setPortfolioItems')
 export const getPortfolioItems = () => async (dispatch) => {
   try {
     dispatch(setLoadingState(true))
-    const data = await axios.get('http://localhost/noch212/portfolio/api')
+    console.log(111);
+    const data = await axios.get(`${baseURL}/portfolio/api`)
     await dispatch(setPortfolioItems(data.data))
     dispatch(setLoadingState(false))
   } catch (error) {
@@ -21,12 +24,12 @@ export const getPortfolioItems = () => async (dispatch) => {
   }
 }
 export const setFilteredItems = createAction('setFilteredItems')
-export const openItem = createAction('openItem')
+export const selectItem = createAction('selectItem')
 
 const reducer = handleActions({
   [setPortfolioItems]: (state, { payload }) => ({
     ...state,
-    items: [...payload, ...payload, ...payload, ...payload, ...payload],
+    items: [...payload],
   }),
   [setLoadingState]: (state, { payload }) => ({
     ...state,
@@ -36,9 +39,9 @@ const reducer = handleActions({
     ...state,
     filteredItems: payload
   }),
-  [openItem]: (state, { payload }) => ({
+  [selectItem]: (state, { payload }) => ({
     ...state,
-    openedItem: payload
+    selected: payload
   })
 }, initialState)
 

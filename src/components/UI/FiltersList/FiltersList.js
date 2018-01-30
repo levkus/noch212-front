@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from 'store/ui'
 import { withRouter } from 'react-router'
 import { uniqueId, flatten, uniq } from 'lodash'
-import { buttonsMap } from '../utils'
+import { buttonsMap } from 'utils/utils'
 
 import MenuLink from 'components/UI/MenuLink/MenuLink'
 
@@ -13,13 +13,8 @@ import './FiltersList.css'
 class FiltersList extends Component {
 
   shouldComponentUpdate = (nextProps) => {
-    console.log('%c> nextProps:', 'background: #7B1FA2; color: #fff; padding: 5px; font-weight: bold;', nextProps);
-    if (nextProps.match.params.filter !== this.props.match.params.filter) {
-      console.log('%c> wtf:', 'background: #D81B60; color: #fff; padding: 5px; font-weight: bold;', nextProps);
-      return true
-    }
-    if (nextProps.filtersOpen !== this.props.filtersOpen) return true
-    return false
+    return nextProps.match.params.filter !== this.props.match.params.filter ||
+           nextProps.filtersOpen !== this.props.filtersOpen
   }
 
   componentDidUpdate = () => {
@@ -42,7 +37,7 @@ class FiltersList extends Component {
 
   renderFilters = () => {
     const filters = uniq(flatten(this.props.items.map(item => item.cat.split(', '))))
-    filters.unshift('all')
+    // filters.unshift('all')
     return filters.map(filter => {
       const label = buttonsMap[filter]
       return (

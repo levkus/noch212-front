@@ -6,9 +6,9 @@ import 'normalize-css/normalize.css'
 import './animations.css';
 import './index.css';
 // import 'react-router-modal/css/react-router-modal.css';
-import App from './components/App';
+import App from 'components/App';
 import registerServiceWorker from './registerServiceWorker';
-import store from './store/store'
+import store from 'store/store'
 
 ReactDOM.render(
   <Provider store={store}>
