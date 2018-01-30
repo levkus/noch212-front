@@ -55,9 +55,19 @@
     width: 200px;
     height: 1px;
   }
+
+  .about-text {
+    max-width: 280px;
+    text-align: center;
+  }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
+  .about-photo {
+    width: 200px;
+    height: 200px;
+  }
+
   .about-text {
     max-width: 280px;
   }
