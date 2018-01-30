@@ -77,7 +77,7 @@ class Details extends Component {
       )
     }
 
-    const year = makeDate(selected.date).year()
+    const year = selected.date
     const files = selected.files.map(file => `${selected.url}/${file}`)
     const currentImage = `${selected.url}/${selected.thumb}`
     console.log('selected', selected)

@@ -10,7 +10,7 @@ import './PortfolioListItem.css'
 const PortfolioListItem = ({ item, delay, match }) => {
   const classnames = `${item.cat.split(', ').map(cat => cat).join(' ')} ${item.techs.split(', ').map(cat => cat).join(' ')}`
   const techs = item.techs.split(', ').map(tech => techsMap[tech]).join(', ')
-  const year = makeDate(item.date).year()
+  const year = item.date
   const path = {
     pathname: `${match.url}/details/${item.id}`,
     state: { modal: true },

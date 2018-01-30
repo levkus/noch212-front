@@ -37,8 +37,10 @@ class FiltersList extends Component {
 
   renderFilters = () => {
     const filters = uniq(flatten(this.props.items.map(item => item.cat.split(', '))))
-    filters.unshift('all')
-    return filters.map(filter => {
+    const filtered = filters.filter(filter => filter !== 'favorites')
+    filtered.unshift('favorites')
+    filtered.unshift('all')
+    return filtered.map(filter => {
       const label = buttonsMap[filter]
       return (
         <MenuLink key={uniqueId('filter')} to={`/portfolio/${filter}`}>{label}</MenuLink>

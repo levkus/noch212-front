@@ -1,4 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
+import { cloneDeep, sortBy } from 'lodash'
+import { makeDate } from 'utils/utils'
 import axios from 'axios'
 
 const initialState = {
@@ -15,9 +17,15 @@ export const setPortfolioItems = createAction('setPortfolioItems')
 export const getPortfolioItems = () => async (dispatch) => {
   try {
     dispatch(setLoadingState(true))
-    console.log(111);
     const data = await axios.get(`${baseURL}/portfolio/api`)
-    await dispatch(setPortfolioItems(data.data))
+    const items = cloneDeep(data.data).map(item => {
+      return {
+        ...item,
+        date: makeDate(item.date).year()
+      }
+    })
+    console.log(items)
+    await dispatch(setPortfolioItems(sortBy(items, 'date').reverse()))
     dispatch(setLoadingState(false))
   } catch (error) {
     console.warn(error)

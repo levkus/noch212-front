@@ -19,7 +19,7 @@ class PortfolioList extends Component {
     console.log('PortfiloList Render')
     return (
       <div>
-        <h4 className='pl-announce'>Порфолио в активной разработке</h4>
+        <h4 style={{ color: '#8496d1', textAlign: 'center' }} className='pl-announce'>Порфолио в активной разработке</h4>
         <Masonry breakpointCols={breakpointColumnsObj} className='pl-grid' columnClassName='pl-column'>
           {this.props.children}
         </Masonry>

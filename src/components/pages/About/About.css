@@ -28,7 +28,7 @@
 
 .about-text {
   max-width: 320px;
-  color: #fff;
+  color: #8496d1;
   opacity: 0;
   animation: 1s appear forwards;
   animation-delay: 0.2s;
