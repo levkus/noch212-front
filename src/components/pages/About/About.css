@@ -19,14 +19,19 @@
   height: 250px;
   border: 1px solid #6e7daf;
   border-radius: 50%;
-  background-image: url('./photo.png');
+  background-image: url('./photo.jpg');
   background-position: center;
   background-size: cover;
+  opacity: 0;
+  animation: 1s appear forwards;
 }
 
 .about-text {
   max-width: 320px;
   color: #fff;
+  opacity: 0;
+  animation: 1s appear forwards;
+  animation-delay: 0.2s;
 }
 
 .about-separator {
@@ -35,6 +40,9 @@
   height: 150px;
   background-color: #6e7daf;
   opacity: .5;
+  opacity: 0;
+  animation: 1s appear forwards;
+  animation-delay: 0.1s;
 }
 
 @media (max-width: 1024px) {
