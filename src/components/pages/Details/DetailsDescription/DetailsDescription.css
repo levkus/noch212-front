@@ -3,6 +3,10 @@
   margin-top: 20px;
 }
 
+.details-description:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 .dd-title {
   font-weight: 400;
 }

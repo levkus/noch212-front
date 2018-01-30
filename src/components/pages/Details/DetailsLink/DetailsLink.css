@@ -1,0 +1,17 @@
+.details-link-container {
+
+}
+
+.details-link {
+  color: #23223f;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.details-link:hover {
+  color: red;
+}
+
+.dl-title {
+  font-weight: 400;
+}

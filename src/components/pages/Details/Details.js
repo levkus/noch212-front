@@ -11,6 +11,7 @@ import DetailsMeta from './DetailsMeta/DetailsMeta'
 import DetailsMetaItem from './DetailsMetaItem/DetailsMetaItem'
 import DetailsSeries from './DetailsSeries/DetailsSeries'
 import DetailsShare from './DetailsShare/DetailsShare'
+import DetailsLink from './DetailsLink/DetailsLink'
 
 import ModalOverlay from 'components/UI/ModalOverlay/ModalOverlay'
 import Loader from 'components/UI/Loader/Loader'
@@ -32,9 +33,20 @@ class Details extends Component {
     document.body.classList.add('details-open')
   }
 
+  componentDidMount = () => {
+    document.addEventListener('keyup', this.handleEscape)
+  }
+
   componentWillUnmount = () => {
     document.body.classList.remove('details-open')
+    document.removeEventListener('keyup', this.handleEscape)
     this.props.actions.selectItem({})
+  }
+
+  handleEscape = (e) => {
+    if (e.keyCode === 27) {
+      this.goBack()
+    }
   }
 
   goBack = () => {
@@ -83,10 +95,14 @@ class Details extends Component {
             <DetailsMeta>
               <DetailsMetaItem title='Название' value={selected.title} />
               <DetailsMetaItem title='Год' value={year} />
-              <DetailsDescription text={selected.lead} />
+              {selected.lead && <DetailsDescription text={selected.lead} />}
+              {selected.link && <DetailsLink link={selected.link} />}
             </DetailsMeta>
             {/* <Separator /> */}
             {/* <DetailsSeries image={currentImage} /> */}
+          </div>
+          <div className='details-close' onClick={this.goBack}>
+            <i className='fa fal fa-times fa-fw' />
           </div>
         </div>
       </ModalOverlay>

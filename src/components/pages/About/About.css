@@ -19,11 +19,14 @@
   height: 250px;
   border: 1px solid #6e7daf;
   border-radius: 50%;
+  background-image: url('./photo.png');
+  background-position: center;
+  background-size: cover;
 }
 
 .about-text {
-  max-width: 300px;
-  color: #6e7daf;
+  max-width: 320px;
+  color: #fff;
 }
 
 .about-separator {
@@ -43,5 +46,11 @@
     margin: 40px 0;
     width: 200px;
     height: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-text {
+    max-width: 280px;
   }
 }

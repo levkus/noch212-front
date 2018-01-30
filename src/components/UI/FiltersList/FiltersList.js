@@ -37,7 +37,7 @@ class FiltersList extends Component {
 
   renderFilters = () => {
     const filters = uniq(flatten(this.props.items.map(item => item.cat.split(', '))))
-    // filters.unshift('all')
+    filters.unshift('all')
     return filters.map(filter => {
       const label = buttonsMap[filter]
       return (
