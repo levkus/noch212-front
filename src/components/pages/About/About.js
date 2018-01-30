@@ -11,7 +11,7 @@ const About = () => (
         <div className='about-photo' />
         <div className='about-separator' />
         <div className='about-text'>
-          <h2>Привет!</h2>
+          <h2 className='about-hi'>Привет!</h2>
           Меня зовут Василина. Я художник и дизайнер. А еще я никудышный копирайтер.
           <br />
           На этом, пожалуй, и закончу :)

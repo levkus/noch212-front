@@ -26,6 +26,11 @@
   animation: 1s appear forwards;
 }
 
+.about-hi {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 .about-text {
   max-width: 320px;
   color: #8496d1;
